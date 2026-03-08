@@ -21,6 +21,6 @@ To bridge the gap between "I don't speak Telugu" and confident daily interaction
 Anyone who has recently moved to Hyderabad for work, speaks English or Hindi, and wants to connect with locals, order food, negotiate with auto drivers, and build relationships without feeling like a complete outsider.
 
 ## 🚀 Quick Start
-- [Survival Phrases](#) (Coming soon)
-- [Vocabulary Flashcards](#) (Coming soon)
-- [Practice Scenarios](#) (Coming soon)
+- [Survival Phrases](02_survival_and_emergencies.md)
+- [Vocabulary Flashcards](flashcards/index.md)
+- [Practice Scenarios](games/index.md)
