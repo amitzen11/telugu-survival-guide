@@ -15,8 +15,8 @@ Welcome to your Telugu Survival Guide dashboard! Here you can track your progres
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     Promise.all([
-        import('/assets/js/progress.js'),
-        import('/assets/js/activity.js')
+        import('../assets/js/progress.js'),
+        import('../assets/js/activity.js')
     ]).then(([progModule, actModule]) => {
         // Hydrate profile UI
         const root = document.getElementById('profile-root');
