@@ -1,0 +1,297 @@
+/* ========================================
+   DESIGN SYSTEM — Telugu Survival Guide
+   Inspired by Hyderabad/Telangana culture (Charminar, Pearls, Deccan)
+   ======================================== */
+
+:root {
+    /* Brand Colors */
+    --brand-primary: #F5E6CC; /* Charminar Sand / Pearl */
+    --brand-accent: #008060; /* Deccan Green */
+    --brand-neutral: #475569; /* Slate Grey */
+    --brand-gold: #FF9933; /* Saffron/Marigold */
+
+    /* Semantic Colors */
+    --color-success: #10B981;
+    --color-error: #EF4444;
+    --color-warning: #F59E0B;
+}
+
+/* Glassmorphism Pattern */
+.glass-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* 2. Phrase Cards */
+.phrase-card {
+    background-color: var(--md-default-bg-color);
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.phrase-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-color: var(--brand-accent);
+}
+
+/* 3. Audio Button Styling */
+.audio-btn {
+    background: var(--brand-accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.audio-btn:hover {
+    transform: scale(1.1);
+    background: var(--brand-gold);
+}
+.audio-btn.playing {
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 128, 96, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 128, 96, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 128, 96, 0); }
+}
+
+/* 4. Toast Notifications */
+.toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+}
+.toast {
+    background: var(--brand-neutral);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-top: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    animation: slideIn 0.3s ease forwards;
+}
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* 5. Toggle Switches */
+.custom-toggle {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+.custom-toggle input { display: none; }
+.custom-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+.custom-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .custom-slider { background-color: var(--brand-accent); }
+input:checked + .custom-slider:before { transform: translateX(20px); }
+
+/* 6. Status Header Bar */
+.status-header {
+    background: transparent;
+    color: var(--text-main);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.status-header-text {
+    color: white;
+}
+
+/* 7. Profile Dashboard */
+.profile-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    margin-top: 24px;
+}
+.rank-card {
+    background: linear-gradient(135deg, var(--brand-accent), var(--brand-neutral));
+    color: white;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+}
+
+/* 8. Badge Grid */
+.badge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 16px;
+}
+.badge-item {
+    text-align: center;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+.badge-item.unlocked {
+    opacity: 1;
+    filter: none;
+    animation: shimmer 2s infinite linear;
+}
+
+/* 9. Word of the Day Widget */
+.wotd-widget {
+    background: var(--md-default-bg-color);
+    border-left: 4px solid var(--brand-gold);
+    padding: 16px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.streak-pill {
+    background: var(--brand-gold);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+/* 10. Share Modal */
+.share-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+.share-modal {
+    width: 90%;
+    max-width: 400px;
+    padding: 24px;
+}
+
+/* 11. Activity Heatmap */
+.heatmap {
+    display: grid;
+    grid-template-columns: repeat(52, 1fr);
+    grid-gap: 2px;
+}
+.heatmap-cell {
+    aspect-ratio: 1;
+    background: #ebedf0;
+    border-radius: 2px;
+}
+.heatmap-cell[data-level="1"] { background: #c6e48b; }
+.heatmap-cell[data-level="2"] { background: #7bc96f; }
+.heatmap-cell[data-level="3"] { background: #239a3b; }
+.heatmap-cell[data-level="4"] { background: #196127; }
+
+/* 12. Game Feature Cards */
+.game-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+.game-card:hover { transform: translateY(-5px); }
+
+/* 13. Responsive Overrides */
+@media (max-width: 768px) {
+    .profile-dashboard { grid-template-columns: 1fr; }
+    .status-header { flex-direction: column; text-align: center; }
+}
+
+/* 14. Games Dashboard Feature Cards */
+.swalpa-feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+}
+.swalpa-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(128, 128, 128, 0.05);
+    border: 1px solid rgba(128, 128, 128, 0.1);
+    border-radius: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.swalpa-feature-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.swalpa-feature-icon {
+    font-size: 48px;
+    flex-shrink: 0;
+}
+.swalpa-feature-content {
+    flex-grow: 1;
+}
+.swalpa-feature-content h3 {
+    margin: 0 0 4px;
+    font-family: 'Outfit', sans-serif;
+    color: var(--brand-gold);
+}
+.swalpa-feature-content p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+.swalpa-feature-action {
+    flex-shrink: 0;
+}
+.swalpa-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: var(--brand-accent);
+    color: white !important;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    transition: opacity 0.2s, transform 0.2s;
+    white-space: nowrap;
+}
+.swalpa-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+@media (max-width: 600px) {
+    .swalpa-feature-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .swalpa-feature-icon {
+        font-size: 36px;
+    }
+}

@@ -1,0 +1,149 @@
+/* ========================================
+   GAME ENGINE CSS — Meter Haaki
+   ======================================== */
+:root {
+    --primary: #F5E6CC; /* Charminar Sand */
+    --accent: #008060; /* Deccan Green */
+    --gold: #FF9933; /* Saffron */
+    --bg-dark: #0F172A;
+    --glass-bg: rgba(30, 41, 59, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --text-main: #F8FAFC;
+    --text-muted: #94A3B8;
+    --red: #EF4444;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow: hidden;
+    touch-action: manipulation;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+#game-scene {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    max-height: 850px;
+    background-color: #000;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+
+/* OVERLAYS */
+.overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.95);
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    text-align: center;
+}
+.overlay.active { display: flex; }
+.overlay h1 { font-family: 'Outfit', sans-serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 8px; }
+
+/* UTILS */
+.styled-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 8px 0;
+    width: 100%;
+    transition: transform 0.2s;
+}
+.styled-btn:active { transform: scale(0.95); }
+
+/* GAME UI */
+#game-ui {
+    display: none;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#game-ui.active { display: flex; }
+
+.stats-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    background: transparent;
+    z-index: 10;
+}
+.stat { width: 45%; }
+.stat .label { font-size: 0.8rem; font-weight: bold; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.9); text-transform: uppercase; }
+.meter { height: 8px; background: rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden; margin-top: 4px; }
+.meter .fill { height: 100%; background: var(--gold); transition: width 0.3s ease; }
+.meter .fill.bg-green { background: var(--accent); }
+
+/* DIALOGUE & CHOICES */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--glass-border);
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+}
+#speaker-name { font-family: 'Outfit', sans-serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 8px; }
+#dialogue-text { font-size: 1.1rem; line-height: 1.5; margin-bottom: 20px; min-height: 50px; }
+
+.choice-btn {
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.choice-btn:hover { background: rgba(255,255,255,0.2); }
+.choice-translation { display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+
+/* FEEDBACK ANIMATION */
+#feedback-anchor { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 50; }
+.floating-text {
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    animation: floatUpFade 2s forwards;
+    white-space: nowrap;
+}
+.pos-feedback { color: var(--accent); }
+.neg-feedback { color: var(--red); }
+
+@keyframes floatUpFade {
+    0% { opacity: 0; transform: translateY(20px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(-30px); }
+    100% { opacity: 0; transform: translateY(-40px); }
+}
+
+/* SCORE CARD */
+.score-card { background: rgba(0,0,0,0.5); padding: 20px; border-radius: 12px; margin: 20px 0; font-size: 1.2rem; }

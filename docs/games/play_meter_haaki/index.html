@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Survival Telugu: Meter Haaki</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="game-scene">
+            <!-- Starting Overlay -->
+            <div id="start-screen" class="overlay active">
+                <h1>Meter Haaki</h1>
+                <p>The Auto-Rickshaw Negotiation Game</p>
+                <div class="character-select">
+                    <p>Choose your driver:</p>
+                    <button class="styled-btn" onclick="window.startGame('Anna')">Anna (The Friendly)</button>
+                    <button class="styled-btn" onclick="window.startGame('Mama')">Mama (The Hustler)</button>
+                </div>
+            </div>
+
+            <!-- Game UI -->
+            <div id="game-ui">
+                <div class="stats-bar">
+                    <div class="stat">
+                        <span class="label">Respect</span>
+                        <div class="meter"><div class="fill" id="respect-fill" style="width: 50%;"></div></div>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Wallet</span>
+                        <div class="meter"><div class="fill bg-green" id="wallet-fill" style="width: 100%;"></div></div>
+                    </div>
+                </div>
+
+                <div id="dialogue-box" class="glass-card">
+                    <div id="speaker-name">Driver</div>
+                    <div id="dialogue-text"></div>
+                    <div id="choices-container"></div>
+                </div>
+                
+                <div id="feedback-anchor"></div>
+            </div>
+
+            <!-- End Screen Overlay -->
+            <div id="end-screen" class="overlay">
+                <h1 id="end-title">Ride Complete</h1>
+                <p id="end-message"></p>
+                <div class="score-card">
+                    <div>Final Respect: <span id="final-respect"></span></div>
+                    <div>Wallet Remaining: <span id="final-wallet"></span>%</div>
+                </div>
+                <button class="styled-btn" onclick="location.reload()">Play Again</button>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="js/data.js"></script>
+    <script type="module" src="js/game.js"></script>
+</body>
+</html>
